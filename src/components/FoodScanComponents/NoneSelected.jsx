@@ -32,9 +32,9 @@ const NoneSelected = () => {
     }
 
     return (
-        <div className='bg-white mt-4 rounded-md flex flex-col'>
+        <div className='bg-[#fafafa] rounded-md flex flex-col'>
             <form 
-                className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200'
+                className='w-full rounded-md shadow-md p-4 border border-slate-200'
                 onSubmit={handleFetchApi}
             >
                 <div className='text-2xl mb-5 font-medium'>
@@ -59,10 +59,8 @@ const NoneSelected = () => {
             {apiResponse && <div className='mt-4'>
             <div className='flex mb-2 gap-3 flex-wrap pb-4 border-b-2 border-b-gray-200'>
                 <div className='flex items-center p-1 flex-grow shadow-md border-black bg-[#1a1313] border-2 rounded-md w-full'>
-                    <div className='flex justify-evenly mx-4 w-full'>
-                        <div><span className='text-slate-200 text-xs'>Food - </span> <span className='text-white text-xs font-semibold' >{apiResponse.item_name}</span></div>  
-                        <div className='text-white'>|</div>
-                        <div><span className='text-slate-200 text-xs'>Servings - </span> <span className='text-white text-xs font-semibold' >{apiResponse["Serving_Size "]}</span></div>    
+                    <div className='flex justify-center mx-4 w-full'>
+                        <div><span className='text-slate-200 text-lg'>Food - </span> <span className='text-white text-lg font-semibold' >{apiResponse.item_name}</span></div>   
                     </div>
                 </div>
                 <div className='flex items-center w-full h-full justify-center p-1 shadow-md bg-zinc-100 rounded-md' >

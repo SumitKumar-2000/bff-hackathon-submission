@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Chart from 'react-apexcharts'
-import demoFoodImage from "../assets/demo-food-img.png"
+import demoFoodImage from "../../assets/demo-food-img.png"
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 // sub components
@@ -26,20 +26,22 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
     }
 
   return (
-    foodApiData && <div className='bg-white mt-2 rounded-md p-4 flex flex-col'>
-        {onOptionsSelect === "" && <div className='flex mb-2 gap-3 flex-wrap pb-4 border-b-2 border-b-gray-200'>
-                <div className='flex items-center p-1 flex-grow shadow-md border-black bg-[#1a1313] border-2 rounded-md w-full'>
-                    <img src={foodImage === "" ? demoFoodImage:foodImage} alt="Food Image" className="rounded-md shadow-md w-[100px] h-[100px] object-fill"/>
-                    <div className='flex flex-col ml-4'>
-                        <div><span className='text-slate-200'>Food - </span> <span className='text-white' >{foodApiData.item_name}</span></div>  
-                        <div><span className='text-slate-200'>Servings - </span> <span className='text-white' >{foodApiData["Serving_Size "]}</span></div>    
+    foodApiData && <div className='bg-[#fafafa] rounded-md p-4 flex flex-col'>
+        {onOptionsSelect === "" && <div className='flex mb-1 gap-3 flex-wrap pb-4'>
+                <div className='flex flex-col items-center p-[2px] shadow-md bg-[#1a1313] rounded-md w-full'>
+                    <img src={foodImage === "" ? demoFoodImage:foodImage}
+                         alt="Food Image" 
+                         className="w-full shadow-md h-[300px] object-cover rounded-md"
+                    />
+                    <div className='flex justify-center items-center'>
+                        <span className='text-white font-medium text-lg' >{(foodApiData.item_name).toUpperCase()}</span>      
                     </div>
                 </div>
-                <div className='flex items-center w-full h-full justify-center p-1 shadow-md bg-zinc-100 rounded-md' >
+                <div className='flex items-center w-full h-full justify-center p-1 shadow-md bg-white border border-slate-200 rounded-md' >
                         <div className='text-[#333333] font-normal text-xl' >Calories -</div>
                         <div className='text-[#536976] ml-1 text-xl font-bold'>{foodApiData.Calories}</div>
                 </div>
-                <div className='shadow-md h-full w-full flex justify-center items-center bg-[#fafafa] rounded-md'>      
+                <div className='shadow-md h-full w-full flex justify-center items-center bg-white border border-slate-200 rounded-md'>      
                     <Chart type='donut' 
                         series={[proteinPercentage.current, fatPercentage.current, carbsPercentage.current]} 
                         options={{
@@ -70,7 +72,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         width={300}
                     />
                 </div>
-                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border-zinc-50 bg-zinc-50 border-2 rounded-md gap-1' >
+                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border border-slate-200 bg-white rounded-md gap-1' >
                     <div className='text-[#333333] font-medium' >Carbs (g)</div>
                     <img 
                         src="https://res.cloudinary.com/dlhrg1au6/image/upload/v1676913714/Foodifyy%20Icons/Carbs-Rice-96_o5xr5x.png" 
@@ -79,7 +81,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                     />
                     <div className='text-[#536976] ml-1 font-bold'>{foodApiData.Total_Carbohydrate_g}</div>
                 </div>
-                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border-zinc-50 bg-zinc-50 border-2 rounded-md gap-1' >
+                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border border-slate-200 bg-white rounded-md gap-1' >
                     <div className='text-[#333333] font-medium' >Protein (g)</div> 
                     <img 
                         src="https://res.cloudinary.com/dlhrg1au6/image/upload/v1676913697/Foodifyy%20Icons/Protein-Lettuce-96_snvogv.png" 
@@ -88,25 +90,25 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                     />
                     <div className='text-[#536976] ml-1 font-bold'>{foodApiData.Protein_g}</div>
                 </div>
-                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border-zinc-50 bg-zinc-50 border-2 rounded-md gap-1' >
+                <div className='flex flex-col items-center justify-center p-1 flex-grow shadow-md border border-slate-200 bg-white rounded-md gap-1' >
                     <div className='text-[#333333] font-medium' >Fat (g)</div>
                     <img 
                         src="https://res.cloudinary.com/dlhrg1au6/image/upload/v1676913708/Foodifyy%20Icons/Fat-Potato-96_vjuvmh.png" 
                         alt="nutrient - Fat"
                         className='w-[40px]'
                     />
-                    <div className='text-[#536976] ml-1 font-bold'>{foodApiData.Total_Fat_g}</div>
+                    <div className='text-[#536976] font-bold'>{foodApiData.Total_Fat_g}</div>
                 </div>
         </div>}
         
         {onOptionsSelect === "" && <div className='pb-4 w-full'>
-            <div className='w-full flex justify-center items-center font-medium' onClick={() => setShowMore(prev => !prev)}>
+            <div className='w-full flex justify-center items-center mb-1 font-medium' onClick={() => setShowMore(prev => !prev)}>
                 <div className='cursor-pointer'>{showMore ? "Show Less" : "Show More"}</div> 
                 <div className='ml-1'>{showMore ? <HiOutlineChevronDown/> : <HiOutlineChevronUp/>}</div>
             </div>
 
-            <div className={`${showMore ? "inline-block" : "hidden"} w-full mt-1 transition-all duration-500`}>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+            <div className={`${showMore ? "inline-block" : "hidden"} w-full transition-all duration-500`}>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Sodium (mg)
                     </div>
@@ -114,7 +116,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Sodium_mg}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Calcium (mg)
                     </div>
@@ -122,7 +124,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Calcium_mg}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Dietary Fiber (g)
                     </div>
@@ -130,7 +132,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Dietary_Fiber_g}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Potassium (mg)
                     </div>
@@ -138,7 +140,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Potassium_mg}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Sugar (g)
                     </div>
@@ -146,7 +148,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Sugars_g}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Iron (mg)
                     </div>
@@ -154,7 +156,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Iron_mg}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                         Cholesterol (mg)
                     </div>
@@ -162,7 +164,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Cholesterol_mg}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                     Mono Unsaturated Fat (g)
                     </div>
@@ -170,7 +172,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                         {foodApiData.Monounsaturated_Fat_g}
                     </div>
                 </div>
-                <div className='w-full flex justify-between p-2 shadow-sm'>
+                <div className='w-full flex bg-white justify-between p-2 shadow-sm'>
                     <div>
                     Poly Unsaturated Fat (g)
                     </div>
@@ -181,13 +183,13 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
             </div>
         </div>}
 
-        {onOptionsSelect === "" && <div className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200'>
-            <div className='text-2xl mb-3 font-medium text-ellipsis'>
-                Did our prediction matched the image you clicked ?
+        {onOptionsSelect === "" && <div className='w-full rounded-md shadow-md p-4 border border-slate-200 bg-white'>
+            <div className='text-lg mb-1 font-medium text-ellipsis'>
+                Did our prediction matched with the image you clicked ?
             </div>
             <div className='w-full flex gap-4'>
                 <div>
-                    <label htmlFor='input-yes' className='text-xl mr-2'>Yes</label>
+                    <label htmlFor='input-yes' className='text-xl text-gray-500 mr-2'>Yes</label>
                     <input 
                         type="radio" 
                         name="result-matched" 
@@ -198,7 +200,7 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
                     />
                 </div>
                 <div>
-                    <label htmlFor='input-no' className='text-xl mr-2'>No</label>
+                    <label htmlFor='input-no' className='text-xl text-gray-500 mr-2'>No</label>
                     <input 
                         type="radio" 
                         name="result-matched" 
@@ -212,8 +214,8 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
         </div>}
 
 
-        {showTrueFoodData === "Yes" && onOptionsSelect === "" ? <div className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200'>
-            <div className='text-2xl mb-5 font-medium'>
+        {showTrueFoodData === "Yes" && onOptionsSelect === "" ? <div className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200 bg-white'>
+            <div className='text-lg mb-5 font-medium'>
                 Awesome! We're glad we could help you find the nutritional values of your meal. Enjoy your meal! 
             </div>
             <button
@@ -224,9 +226,9 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
             </button>
         </div> : null}
 
-        {showTrueFoodData === "No" ? <div className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200'>   
-            <div className='text-2xl mb-4 font-medium text-ellipsis'>
-               Select food that perfectly matches with the food image you clicked
+        {showTrueFoodData === "No" && onOptionsSelect === "" ? <div className='w-full mt-4 rounded-md shadow-md p-4 border border-slate-200 bg-white'>   
+            <div className='text-lg mb-4 font-medium text-ellipsis'>
+               Select food that perfectly matches the food image you clicked
             </div>            
             <select 
                 className={`w-full rounded-[2px] px-1 h-[35px] text-[#ACACAC] text-sm bg-[#ffffff] cursor-pointer focus:outline-none border`}
@@ -250,8 +252,8 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
             </select>
         </div> : null}  
         
-        {onOptionsSelect !== "" && onOptionsSelect !== "None" && <FoodDataSelected onOptionsSelect={onOptionsSelect}/>}
-        {onOptionsSelect !== "" && onOptionsSelect === "None" && <NoneSelected/>}
+        {onOptionsSelect!=="" && onOptionsSelect !== "None" && <FoodDataSelected onOptionsSelect={onOptionsSelect}/>}
+        {onOptionsSelect!=="" && onOptionsSelect === "None" && <NoneSelected/>}
 
     </div>
   )

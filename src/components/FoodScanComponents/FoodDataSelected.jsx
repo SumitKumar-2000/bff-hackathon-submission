@@ -29,13 +29,11 @@ const FoodDataSelected = ({onOptionsSelect}) => {
     }
 
     return (
-       apiResponse && <div className='mt-4'>
+       apiResponse && <div className='bg-#fafafa'>
             <div className='flex mb-2 gap-3 flex-wrap pb-4 border-b-2 border-b-gray-200'>
-                <div className='flex items-center p-1 flex-grow shadow-md border-black bg-[#1a1313] border-2 rounded-md w-full'>
+                <div className='flex items-center p-2 flex-grow shadow-md border-black bg-[#1a1313] border-2 rounded-md w-full'>
                     <div className='flex justify-evenly mx-4 w-full'>
-                        <div><span className='text-slate-200 text-xs'>Food - </span> <span className='text-white text-xs font-semibold' >{apiResponse.item_name}</span></div>  
-                        <div className='text-white'>|</div>
-                        <div><span className='text-slate-200 text-xs'>Servings - </span> <span className='text-white text-xs font-semibold' >{apiResponse["Serving_Size "]}</span></div>    
+                        <div><span className='text-slate-200 text-lg'>Food - </span> <span className='text-white text-lg font-semibold' >{(apiResponse.item_name).toUpperCase()}</span></div>  
                     </div>
                 </div>
                 <div className='flex items-center w-full h-full justify-center p-1 shadow-md bg-zinc-100 rounded-md' >
