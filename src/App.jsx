@@ -1,7 +1,7 @@
 import FoodScan from "./pages/FoodScan"
 import Navbar from './components/Navbar/Navbar'
 import { useContext, useState } from "react"
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import FeedPage from "./pages/FeedPage"
 import SignInPage from "./pages/SignInPage"
 import ProfilePage from "./pages/ProfilePage"

@@ -39,7 +39,7 @@ const SignInPage = () => {
   }
 
   return (
-    <div className='px-4 w-full'>
+    <div className='px-4 max-w-[600px] mx-auto'>
 
         <div className='flex flex-col items-center border-2 rounded-md p-4 mt-[100px] shadow-sm'>
             <img 

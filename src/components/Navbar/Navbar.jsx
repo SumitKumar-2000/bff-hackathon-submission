@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navbar = ({scan, setScan}) => {
   return (
-    <div className='w-full flex py-3 px-4 justify-between items-center border-b-2 sticky bg-white'>
+    <div className='max-w-[600px] mx-auto flex py-3 px-4 justify-between items-center border-2 sticky bg-white'>
       <div>
         <img 
           src="https://res.cloudinary.com/dlhrg1au6/image/upload/v1676916476/Foodifyy%20Icons/foodifyy-logo_yrgmra.png" 
