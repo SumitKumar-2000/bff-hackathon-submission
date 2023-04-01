@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Navbar scan={scan} setScan={setScan}/>
       <Routes>
-        <Route path="/foodScan" element={<FoodScan scan={scan} setScan={setScan} />}/> 
+        <Route path="/foodScan" element={<FoodScan scan={scan} setScan={setScan} />} exact/> 
       </Routes>
     </Router>  
   )
