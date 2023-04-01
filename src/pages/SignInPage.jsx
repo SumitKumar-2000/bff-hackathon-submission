@@ -14,9 +14,12 @@ const SignInPage = () => {
       useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((userAuth) =>{
           if(userAuth){
+            console.log("userAuth: ", userAuth);
             setAuthValues({
              uid: userAuth.uid,
-             email: userAuth.email
+             email: userAuth.email,
+             image: userAuth.photoURL,
+             name: userAuth.displayName,   
             })
             navigate('/foodScan');  
           } else {

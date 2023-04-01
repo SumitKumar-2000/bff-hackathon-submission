@@ -13,7 +13,6 @@ import { AuthCheck } from "./context/authContext"
 function App() {  
 
   const {authValues} = useContext(AuthCheck);
-
   const [scan, setScan] = useState(false)
 
   return (
@@ -21,7 +20,7 @@ function App() {
     <Router>
       <Navbar scan={scan} setScan={setScan}/>
       <Routes>
-        <Route path="/" element={<SignInPage/>} exact/> 
+        <Route path="/" element={<SignInPage/>}/> 
         <Route path="/feed" element={authValues !== null ? <FeedPage/> : <Err_404/>} exact /> 
         <Route path="/profile/:userId" element={authValues !== null ? <ProfilePage/> : <Err_404/>} exact/> 
         <Route path="/foodScan" element={authValues !== null ? <FoodScan scan={scan} setScan={setScan} /> : <Err_404/>} exact /> 

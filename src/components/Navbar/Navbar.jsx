@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Navbar = ({scan, setScan}) => {
+
+  // const {authValues} = useContext(AuthCheck);
+
   return (
     <div className='max-w-[600px] mx-auto flex py-3 px-4 justify-between items-center border-2 sticky bg-white'>
       <div>
