@@ -5,7 +5,7 @@ import { AiOutlineMore } from "react-icons/ai";
 import { AuthCheck } from '../../context/authContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../config/authConfig/firebaseauthconfig';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Properties = ({setPropertiesOpen}) => {
   const navigate = useNavigate();
@@ -29,7 +29,8 @@ const Navbar = ({scan, setScan}) => {
 
   const {authValues} = useContext(AuthCheck);
   const [propertiesOpen, setPropertiesOpen] = useState(false)
-
+  const location = useLocation()
+  
   return (
     <div className='max-w-[600px] mx-auto flex py-1 px-4 justify-between items-center border-2 sticky bg-white'>
       <Link to="/foodScan">
@@ -40,7 +41,7 @@ const Navbar = ({scan, setScan}) => {
         />
       </Link>
       <div className='flex relative items-center'> 
-        {scan && <button 
+        {scan && location.pathname === "/foodScan" && <button 
             onClick={()=>setScan(false)}
             className="font-semibold text-[#00745B] cursor-pointer"
             >
