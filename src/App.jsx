@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignInPage/>}/> 
         <Route path="/feed" element={authValues !== null ? <FeedPage/> : <Err_404/>} exact /> 
-        <Route path="/profile/:userId" element={authValues !== null ? <ProfilePage/> : <Err_404/>} exact/> 
+        <Route path="/profile" element={authValues !== null ? <ProfilePage/> : <Err_404/>} exact/> 
         <Route path="/foodScan" element={authValues !== null ? <FoodScan scan={scan} setScan={setScan} /> : <Err_404/>} exact /> 
       </Routes>
     </Router>  

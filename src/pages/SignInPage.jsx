@@ -9,26 +9,7 @@ import { AuthCheck } from '../context/authContext';
 const SignInPage = () => {
   
     const {setAuthValues} = useContext(AuthCheck);
-    const navigate = useNavigate();
-    
-      useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((userAuth) =>{
-          if(userAuth){
-            console.log("userAuth: ", userAuth);
-            setAuthValues({
-             uid: userAuth.uid,
-             email: userAuth.email,
-             image: userAuth.photoURL,
-             name: userAuth.displayName,   
-            })
-            navigate('/foodScan');  
-          } else {
-            setAuthValues(null)
-          }
-        })
-    
-        return () => unsubscribe;
-      },[])  
+    const navigate = useNavigate();  
 
   // google auth 
   const handleGoogleSignIn = async () => {
@@ -36,7 +17,14 @@ const SignInPage = () => {
     await signInWithPopup(auth, googleProvider).
     then(data => {
         console.log("loggedIn User: ", data.user);
-      }
+        setAuthValues({
+            uid: data.user.uid,
+            email: data.user.email,
+            image: data.user.photoURL,
+            name: data.user.displayName,   
+        })
+        navigate("/foodScan")
+    }
     ).catch(err => console.log("signIn with google auth err: ",err)) 
     
   }
