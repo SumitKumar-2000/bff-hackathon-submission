@@ -9,6 +9,7 @@ import Err_404 from "./pages/err_404"
 
 // auth imports
 import { AuthCheck } from "./context/authContext"
+import ChatPage from "./pages/chatPage"
 
 function App() {  
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/feed" element={authValues !== null ? <FeedPage/> : <Err_404/>} exact /> 
         <Route path="/profile" element={authValues !== null ? <ProfilePage/> : <Err_404/>} exact/> 
         <Route path="/foodScan" element={authValues !== null ? <FoodScan scan={scan} setScan={setScan} /> : <Err_404/>} exact /> 
+        <Route path="/chat" element={authValues !== null ? <ChatPage/> : <Err_404/>} exact /> 
       </Routes>
     </Router>  
   )

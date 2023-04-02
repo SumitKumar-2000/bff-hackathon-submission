@@ -34,29 +34,29 @@ const FeedPage = () => {
   ]
 
   return (
-    <div className='h-[85vh] px-2'>
+    <div className='h-[85vh] px-4'>
     <div className='h-full'>
       <div className='w-full my-4'>
-        <div className='w-full text-xl mb-3 font-bold'>Hello, Ish</div>
-        <div className='w-full mb-5'>See what the world is eating...</div>
-        <div className='w-full text-lg font-medium'>Your Feed</div>
+        <div className='w-full text-2xl mb-1 font-bold'>Hello, Ish</div>
+        <div className='w-full tracking-widest mb-3'>See what the world is eating...</div>
+        <div className='w-full text-xl font-medium'>Your Feed</div>
       </div>
       <div className='w-full '>
       {
         feedData.map(data => {
           return (
-            <div className='w-full rounded-md p-1 shadow-md bg-white border-2 border-gray-200'>
+            <div className='w-full rounded-md p-2 shadow-md bg-white border-2 border-gray-200 mb-2'>
               <div className='w-full rounded-md'>
                 <img 
                   src={data.img} 
-                  alt="food img" 
-                  className='w-full rounded-md h-[150px]'
+                  alt="food img"
+                  className='w-full rounded-md h-[150px] object-cover'
                 />
               </div>
               <div className='bg-white flex justify-between'>
-                <div className='flex flex-col items-start gap-2'>
-                  <div className='text-semiBold'>{data.foodName}</div>
-                  <div className='p-2 bg-gray-300 rounded-sm text-sm text-medium text-gray-600' >{data.userName}</div>
+                <div className='flex flex-col items-start'>
+                  <div className='font-semibold text-lg'>{data.foodName}</div>
+                  <div className='py-1 px-2 bg-gray-300 rounded-sm text-sm text-medium text-gray-600' >{data.userName}</div>
                 </div>
                 <div className=''>
                   
