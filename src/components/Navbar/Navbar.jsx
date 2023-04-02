@@ -19,6 +19,7 @@ const Properties = ({setPropertiesOpen}) => {
     <div className='absolute top-4 right-4 z-30 w-[120px] p-4 bg-white border border-gray-200 rounded-md shadow-md'>
       <div className='w-full h-full flex flex-col gap-2 justify-between'>
         <Link to="/profile" onClick={()=>setPropertiesOpen(false)} className='w-full' >Your Profile</Link>
+        <Link to="/feed" onClick={()=>setPropertiesOpen(false)} className='w-full' >Feed</Link>
         <div onClick={handleLogout}  className='w-full' >Logout</div>
       </div>
     </div>
