@@ -8,21 +8,36 @@ import { AuthCheck } from '../context/authContext';
 
 const SignInPage = () => {
   
-    const {setAuthValues} = useContext(AuthCheck);
+    const {setAuthValues, authVariables} = useContext(AuthCheck);
     const navigate = useNavigate();  
 
   // google auth 
   const handleGoogleSignIn = async () => {
     // google auth popup
     await signInWithPopup(auth, googleProvider).
+
     then(data => {
         console.log("loggedIn User: ", data.user);
+
         setAuthValues({
             uid: data.user.uid,
             email: data.user.email,
-            image: data.user.photoURL,
-            name: data.user.displayName,   
+            name: data.user.displayName,
+            userImg: data.user.photoURL,
+            "total_posts": 0,
+            "user_total_health": 0,
+            "posts_array": [],
+            "sno":null
         })
+
+        const formData = new FormData();
+        formData.append('userdata', authVariables)
+        fetch('https://BFF-DB-Backend.ishkapoor.repl.co/create_user',{
+          method:"POST",
+          body:formData
+        }).then(res => res.json())
+          .catch(err => console.log("fetched-err: ",err))
+
         navigate("/foodScan")
     }
     ).catch(err => console.log("signIn with google auth err: ",err)) 
