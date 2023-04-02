@@ -3,7 +3,6 @@ import {MdCloudUpload} from "react-icons/md"
 import axios from 'axios';
 
 const FoodImageUpload = ({setFoodApiData,setFoodImage,showLoading, setScan, Error}) => {
-
     const [capturedImg, setCapturedImg] = useState(null);
     
     const handleDataFetch = async () =>{

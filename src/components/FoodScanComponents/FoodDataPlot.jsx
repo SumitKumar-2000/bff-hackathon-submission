@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import Chart from 'react-apexcharts'
 import demoFoodImage from "../../assets/demo-food-img.png"
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
@@ -6,8 +6,13 @@ import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 // sub components
 import FoodDataSelected from './FoodDataSelected';
 import NoneSelected from './NoneSelected';
+// import { AuthCheck } from '../../context/authContext';
+// import { useNavigate } from 'react-router-dom';
 
 const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
+
+    // const {authVariables} = useContext(AuthCheck)
+    // const navigate = useNavigate()
 
     const [showMore, setShowMore] = useState(false)
     const [onOptionsSelect, setOnOptionsSelect] = useState("")
@@ -17,12 +22,75 @@ const FoodDataPlot = ({foodApiData,foodImage, setScan}) => {
     const proteinPercentage = useRef(0)
     const carbsPercentage = useState(0)
 
+    // const healthIndex = (foodItem) => {
+    //     const foodItem = {
+    //       "index": 15,
+    //       "item_name": "besan chilla",
+    //       "item_name1": "besan chilla",
+    //       "item_found": "bean cake",
+    //       "Calories": 130,
+    //       "Serving_Size ": "1 cake",
+    //       "Total_Fat_g": "6.82",
+    //       "Saturated_Fat_g": "1.234",
+    //       "Monounsaturated_Fat_g": 2.704,
+    //       "Sodium_mg": "60",
+    //       "Total_Carbohydrate_g": 15.77,
+    //       "Dietary_Fiber_g": "0.9",
+    //       "Sugars_g": 6.81,
+    //       "Calcium_mg": "3",
+    //       "Iron_mg": "0.67",
+    //       "Potassium_mg": 58,
+    //       "Vitamin_A_mcg": "0",
+    //       "Vitamin_C_mg": "0",
+    //       "Trans_Fat_g": 0,
+    //       "Vitamin_D_mcg": 0,
+    //       "Cholesterol_mg": "0",
+    //       "Protein_g": 1.71,
+    //       "Polyunsaturated_Fat_g": 2.519
+    //     };
+        
+    //     const goodNutrients = foodItem.Protein_g + foodItem.Dietary_Fiber_g + foodItem.Calcium_mg + foodItem.Iron_mg + foodItem.Potassium_mg + foodItem.Vitamin_A_mcg + foodItem.Vitamin_C_mg;
+    //     const badNutrients = parseFloat(foodItem.Total_Fat_g) + parseFloat(foodItem.Saturated_Fat_g) + parseFloat(foodItem.Trans_Fat_g) + parseFloat(foodItem.Cholesterol_mg) + parseFloat(foodItem.Sodium_mg) + parseFloat(foodItem.Sugars_g);
+    //     const healthIndex = (goodNutrients - badNutrients) / foodItem.Calories;
+        
+    //     // health_index = (foodItem.Calories/100 * 0.4) + (foodItem.total_fat * 9/100 * 0.2) + (saturated_fat * 9/100 * 0.1) + (sodium/1000 * 0.1) + (fiber * 0.1) + (protein * 4/100 * 0.1)
+        
+    //     console.log(`The health index of ${foodItem.item_name} is ${healthIndex}`);
+    //     return healthIndex
+    // }
+
     if(foodApiData){
         var calorieSum = parseFloat(foodApiData.Total_Carbohydrate_g) + parseFloat(foodApiData.Total_Fat_g) + parseFloat(foodApiData.Protein_g);
 
         fatPercentage.current = Math.round((foodApiData.Total_Fat_g / calorieSum) * 100)
         proteinPercentage.current = Math.round((foodApiData.Protein_g / calorieSum) * 100)
         carbsPercentage.current = Math.round((foodApiData.Total_Carbohydrate_g / calorieSum) * 100)
+
+        // (async () => {
+        //     const formData = new FormData();
+        //     formData.append("feeddata", {
+        //         user_name: authVariables.name,
+        //         uuid: authVariables.user_google_uuid,
+        //         post_id: 1001,
+        //         image_url: foodImage,
+        //         health_index: healthIndex(foodApiData),
+        //         food_name: foodApiData.item_name,
+        //         carbs: foodApiData.Total_Carbohydrate_g,
+        //         fat: foodApiData.Total_Fat_g,
+        //         cal: foodApiData.Calories,
+        //         protein: foodApiData.protein_g,
+        //         sugar: foodApiData.Sugars_g,
+        //         sno: null,
+        //     })
+        //     await fetch("https://BFF-DB-Backend.ishkapoor.repl.co/publish_post",{
+        //         method: "POST",
+        //         body: formData
+        //     }).then(res => {
+        //             console.log("post response: ", res.data)
+        //             navigate("/feed")
+        //         })
+        //       .catch(err => console.log("post response err: ",err))
+        // })()
     }
 
   return (
